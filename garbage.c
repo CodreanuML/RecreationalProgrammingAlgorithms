@@ -8,6 +8,8 @@
 
 #define CAPACITY 640000
 #define HEAP_ALLOCED_CAP 1024
+#define HEAP_FREED_CAP 1024
+
 
 typedef struct {
 	void * start;
@@ -23,9 +25,12 @@ typedef struct {
 #endif
 
 size_t heap_size = 0 ;
+
 Heap_Chunk heap_alloced_chunks[HEAP_ALLOCED_CAP]={};
 size_t heap_alloced_size=0;
 
+Heap_Chunk heap_freed[HEAP_FREED_CAP]={};
+size_t heap_freed_size=0;
 
 void *heap_alloc(size_t size)
 {
@@ -58,8 +63,11 @@ void heap_dump_alloced_chunks(void){
 }
 
 void heap_free(void * ptr){
-	(void) ptr;
-	assert(false && "TODO: heap_free is not implemented");
+	for (size_t i=0 ;i<heap_allocated_size;++i){
+		if (heap_alloced_chunks[i].start==ptr) {
+
+		}
+	}
 
 }
 
